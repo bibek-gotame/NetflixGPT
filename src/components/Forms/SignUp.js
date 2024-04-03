@@ -4,6 +4,7 @@ const  SignUp =()=> {
   return (
     <>
     <Header/>
+    
     <div>SignUp</div>
     </>
   )
