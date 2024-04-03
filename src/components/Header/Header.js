@@ -1,7 +1,12 @@
 
 function Header() {
+  console.log('hii');
+
   return (
-    <div>Header</div>
+    <div>
+      
+      {/* HeaderNamaste World */}
+    </div>
   )
 }
 
