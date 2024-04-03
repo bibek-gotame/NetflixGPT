@@ -1,7 +1,11 @@
+import Header from "../Header/Header"
 
-function SignUp() {
+const  SignUp =()=> {
   return (
+    <>
+    <Header/>
     <div>SignUp</div>
+    </>
   )
 }
 
