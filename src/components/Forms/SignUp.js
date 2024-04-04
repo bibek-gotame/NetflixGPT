@@ -5,7 +5,7 @@ const  SignUp =()=> {
     <>
     <Header/>
     
-    <div>SignUp</div>
+    <div className='text-xl text-green-600'>SignUp</div>
     </>
   )
 }

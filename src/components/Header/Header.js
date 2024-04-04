@@ -1,11 +1,11 @@
 
 function Header() {
-  console.log('hii');
+  // console.log('hii');
 
   return (
     <div>
       
-      {/* HeaderNamaste World */}
+      HeaderNamaste World
     </div>
   )
 }
