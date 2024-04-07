@@ -4,8 +4,10 @@ import { checkValidate } from '../../utils/validate'
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utils/firebase";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const Navigate = useNavigate()
   const [isSignIn, setIsSignIn] = useState(true)
   const [ermessage, setErmessage] = useState(null)
   const email = useRef(null) // useRef takes the reference from ref={} and returns and an object.
@@ -25,15 +27,12 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          // console.log(user);
-          // ...
+          Navigate('/browse')
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // console.log(errorMessage);
           setErmessage(errorCode + errorMessage)
-          // ..
         });
 
     } else {
@@ -41,13 +40,12 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          // console.log(user);
-          // ...
+          Navigate('/browse')
+
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // console.log(errorMessage);
           setErmessage(errorCode + errorMessage)
         });
     }
