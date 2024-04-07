@@ -5,15 +5,20 @@ import { checkValidate } from '../../utils/validate'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SignUp = () => {
+  const user = useSelector((store)=> store.user)
   const Navigate = useNavigate()
   const [isSignIn, setIsSignIn] = useState(true)
   const [ermessage, setErmessage] = useState(null)
   const email = useRef(null) // useRef takes the reference from ref={} and returns and an object.
   const password = useRef(null)
   // const name = useRef(null)
-  
+  if(user){
+    Navigate('/browse')
+  }
+
   const handleSubmit = () => {
     
     //Validate the Forms
@@ -28,7 +33,7 @@ const SignUp = () => {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           // Signed up 
-          const user = userCredential.user;
+          const userr = userCredential.user;
           Navigate('/browse')
         })
         .catch((error) => {
