@@ -13,14 +13,16 @@ const SignUp = () => {
   const email = useRef(null) // useRef takes the reference from ref={} and returns and an object.
   const password = useRef(null)
   // const name = useRef(null)
-
+  
   const handleSubmit = () => {
+    
     //Validate the Forms
     const message = checkValidate(email.current.value, password.current.value) // it returns either error message or null
-    // ? useref.current.value to excess the value
+    // ? useref => __.current.value to excess the value
+
     setErmessage(message)
 
-    if (message) return;
+    if (message) return;  //returns if message exist which implies an error no futher code will not be executed
 
     if (!isSignIn) {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
@@ -40,6 +42,7 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
+          console.log(user );
           Navigate('/browse')
 
         })

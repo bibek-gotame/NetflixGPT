@@ -6,7 +6,8 @@
     - Firesbase
     - GPT API
     - Forms
-
+        -Form Validation
+    -
 # Features
     - LogIn/Signup
         - LogIn/Signup forms
@@ -21,3 +22,4 @@
     -NetflixGPT
         - Search Bar
         - Movie Suggetions                                                                                                                                                                                                                                                                                            
+        
