@@ -25,30 +25,30 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorMessage);
+          // console.log(errorMessage);
+          setErmessage(errorCode + errorMessage)
           // ..
         });
 
-    }
-
-    if (isSignIn) {
+    } else {
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorMessage);
+          // console.log(errorMessage);
+          setErmessage(errorCode + errorMessage)
         });
     }
 
@@ -68,7 +68,7 @@ const SignUp = () => {
       </div>
       <form onSubmit={(e) => e.preventDefault()} className="absolute flex flex-col gap-3 w-[23rem] py-10 px-6 rounded-lg bg-black top-32 left-[40%] text-white bg-opacity-85">
         <h2 className="font-extrabold text-2xl my-2" >{isSignIn ? 'Sign In' : 'Sign Up'}</h2>
-        {!isSignIn && <input  type='text' placeholder='Enter your Full Name' className="w-full p-4  rounded-md bg-gray-800" />
+        {!isSignIn && <input type='text' placeholder='Enter your Full Name' className="w-full p-4  rounded-md bg-gray-800" />
         }
         <input ref={email} type='email' placeholder='Enter your email' className="w-full p-4  rounded-md bg-gray-800" />
         <input ref={password} type='password' placeholder='Enter your password' className="w-full p-4   rounded-md bg-gray-800" />
