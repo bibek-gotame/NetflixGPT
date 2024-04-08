@@ -7,12 +7,19 @@ import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../utils/store/userSlice'
 const SignUp = () => {
   const user = useSelector((store) => store.user)
+  const dispatch = useDispatch()
+
+
   const Navigate = useNavigate()
+
+
   const [isSignIn, setIsSignIn] = useState(true)
   const [ermessage, setErmessage] = useState(null)
-  const email = useRef(null) // useRef takes the reference from ref={} and returns and an object.
+  const emaill = useRef(null) // useRef takes the reference from ref={} and returns and an object.
   const password = useRef(null)
   const name = useRef(null)
 
@@ -41,7 +48,7 @@ const SignUp = () => {
   const handleSubmit = () => {
 
     //Validate the Forms
-    const message = checkValidate(email.current.value, password.current.value) // it returns either error message or null
+    const message = checkValidate(emaill.current.value, password.current.value) // it returns either error message or null
     // ? useref => __.current.value to excess the value
 
     setErmessage(message)
@@ -49,20 +56,21 @@ const SignUp = () => {
     if (message) return;  //returns if message exist which implies an error no futher code will not be executed
 
     if (!isSignIn) {
-      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      createUserWithEmailAndPassword(auth, emaill.current.value, password.current.value)
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
           console.log('im runnning..1');
 
           updateProfile(user, {
-            displayName: 'hi', photoURL: "https://images.unsplash.com/photo-1712415341931-96aff76a42e9?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            displayName: name.current.value , photoURL: "https://images.unsplash.com/photo-1712415341931-96aff76a42e9?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           }).then(() => {
-            console.log('profile updated');
-            Navigate('/browse');
-            console.log(user);
-
             // Profile updated!
+            const { uid, email, displayName ,photoURL} = user
+
+            dispatch(addUser({ uid: uid, emaill : email, displayName: displayName ,photoURL : photoURL}))
+
+            Navigate('/browse');
             // ...
           }).catch((error) => {
             console.log(error);
@@ -80,7 +88,7 @@ const SignUp = () => {
         });
 
     } else {
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      signInWithEmailAndPassword(auth, emaill.current.value, password.current.value)
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
@@ -115,9 +123,9 @@ const SignUp = () => {
       </div>
       <form onSubmit={(e) => e.preventDefault()} className="absolute flex flex-col gap-3 w-[23rem] py-10 px-6 rounded-lg bg-black top-32 left-[40%] text-white bg-opacity-85">
         <h2 className="font-extrabold text-2xl my-2" >{isSignIn ? 'Sign In' : 'Sign Up'}</h2>
-        {!isSignIn && <input type='text' placeholder='Enter your Full Name' className="w-full p-4  rounded-md bg-gray-800" />
+        {!isSignIn && <input ref={name} type='text' placeholder='Enter your Full Name' className="w-full p-4  rounded-md bg-gray-800" />
         }
-        <input ref={email} type='email' placeholder='Enter your email' className="w-full p-4  rounded-md bg-gray-800" />
+        <input ref={emaill} type='email' placeholder='Enter your email' className="w-full p-4  rounded-md bg-gray-800" />
         <input ref={password} type='password' placeholder='Enter your password' className="w-full p-4   rounded-md bg-gray-800" />
         <p className="text-red-500 font-bold">        {ermessage}
         </p>
