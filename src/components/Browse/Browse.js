@@ -5,8 +5,11 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 function Browse() {
 
-// const user = useSelector((store)=> store.user)
+const user = useSelector((store)=> store.user)
+const { uid,email,photoURL} = user
+console.log(uid);
 // const navigate = useNavigate()
+// console.log(user.displayName);
 
 // if(!user) {
 //   navigate('/')
@@ -15,6 +18,9 @@ function Browse() {
   return (
     <>
     <Header/>
+    {/* {photoURL} */}
+    {/* {user.displayName} */}
+<img src={photoURL} alt='photoo'/>
     </>
   )
 }

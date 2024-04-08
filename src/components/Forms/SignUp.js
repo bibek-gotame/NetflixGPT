@@ -53,27 +53,30 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
+          console.log('im runnning..1');
 
           updateProfile(user, {
-            displayName: 'hi', photoURL: "https://example.com/jane-q-user/profile.jpg"
+            displayName: 'hi', photoURL: "https://images.unsplash.com/photo-1712415341931-96aff76a42e9?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           }).then(() => {
             console.log('profile updated');
             Navigate('/browse');
+            console.log(user);
 
             // Profile updated!
             // ...
           }).catch((error) => {
             console.log(error);
+            console.log('error from profile');
             // An error occurred
             // ...
           });
-          console.log('im runnning..1');
 
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErmessage(errorCode + errorMessage)
+          console.log(errorMessage);
         });
 
     } else {
