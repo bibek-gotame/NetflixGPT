@@ -16,14 +16,27 @@ const SignUp = () => {
   const password = useRef(null)
   const name = useRef(null)
 
-  if (user) {
-    Navigate('/browse')
-  }
+  // if (user) {
+  //   Navigate('/browse')
+  // }
   // useEffect(() => {
   //   if (user) {
   //     Navigate('/browse');
   //   }
   // }, [user, Navigate]) 
+  // useEffect(()=>{
+  //   updateProfile(user, {
+  //     displayName: 'hi', photoURL: "https://example.com/jane-q-user/profile.jpg"
+  //   }).then(() => {
+  //     console.log('profile updated');
+  //     // Profile updated!
+  //     // ...
+  //   }).catch((error) => {
+  //     console.log(error);
+  //     // An error occurred
+  //     // ...
+  //   });
+  // },[user])
 
   const handleSubmit = () => {
 
@@ -40,6 +53,20 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
+
+          updateProfile(user, {
+            displayName: 'hi', photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(() => {
+            console.log('profile updated');
+            Navigate('/browse');
+
+            // Profile updated!
+            // ...
+          }).catch((error) => {
+            console.log(error);
+            // An error occurred
+            // ...
+          });
           console.log('im runnning..1');
 
         })
@@ -54,6 +81,8 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
+          Navigate('/browse');
+          console.log('sign-running');
         })
         .catch((error) => {
           const errorCode = error.code;
