@@ -1,11 +1,15 @@
 import { useSelector } from "react-redux"
 import { signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase";
+import { Navigate, useNavigate } from 'react-router-dom'
+
 function Header() {
   const user = useSelector((store) => store.user)
+const navigate = useNavigate()
 
   const SignOut = ()=>{
     signOut(auth).then(() => {
+navigate('/')
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.

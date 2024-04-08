@@ -1,26 +1,32 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { checkValidate } from '../../utils/validate'
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const SignUp = () => {
-  const user = useSelector((store)=> store.user)
+  const user = useSelector((store) => store.user)
   const Navigate = useNavigate()
   const [isSignIn, setIsSignIn] = useState(true)
   const [ermessage, setErmessage] = useState(null)
   const email = useRef(null) // useRef takes the reference from ref={} and returns and an object.
   const password = useRef(null)
-  // const name = useRef(null)
-  if(user){
+  const name = useRef(null)
+
+  if (user) {
     Navigate('/browse')
   }
+  // useEffect(() => {
+  //   if (user) {
+  //     Navigate('/browse');
+  //   }
+  // }, [user, Navigate]) 
 
   const handleSubmit = () => {
-    
+
     //Validate the Forms
     const message = checkValidate(email.current.value, password.current.value) // it returns either error message or null
     // ? useref => __.current.value to excess the value
@@ -33,8 +39,9 @@ const SignUp = () => {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           // Signed up 
-          const userr = userCredential.user;
-          Navigate('/browse')
+          const user = userCredential.user;
+          console.log('im runnning..1');
+
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -47,9 +54,6 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          console.log(user );
-          Navigate('/browse')
-
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -60,6 +64,11 @@ const SignUp = () => {
 
 
   }
+
+  // if (user) {
+  //   Navigate('/browse')
+  // }
+  // else
   return (
 
     <>

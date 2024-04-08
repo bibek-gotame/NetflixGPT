@@ -22,12 +22,13 @@ function Body() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
+        console.log(displayName);
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName}))
         // console.log(user);
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
-        console.log(user);
       } else {
         // User is signed out
         dispatch(removeUser())
+
         // ...
       }
     });
