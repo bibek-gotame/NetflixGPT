@@ -8,15 +8,22 @@
 - useNavigate to navigate the path . used after certain condition or in function().
 
 <!--*-------------------------------- Concepts and Codes------------------------------------------ -->
+<!--! get know clearly about the authencation API's -->
 
+<!--? -------------------------------Auth APIs-------------------------------------------------------->
 - createUserWithEmailAndPassword : an api to create and account in firebase.
 - signInWithEmailAndPassword : an api to verify either account existed.
-- onAuthStateChanged : an api to watch changes i.e SignIn/SignUp or SignOut. It is used inside the useEffect to render only once after initial rendering. Then , dipatched action can be taken to update the store.
+- onAuthStateChanged : an api to watch changes i.e SignIn/SignUp or SignOut. It is used inside the useEffect to render only once after initial rendering. Then , dipatched action can be taken to update the store.{not forget to unsubscribe}
 
-- useNavigate : a hook used to navigate directly.
+- signOut : an api to signOut calling to oASC
+- updateProfile : an api to update the data of auth (used in cUWEP to update data only after sign up in this project)
+- unsubscribing..........<!--! not know much more -->
 -
+- useNavigate : a hook used to navigate directly.(used in oASC for proper redirection )
+
+
 
 <!--*--------------------------------- Better to Know ------------------------------------------- -->
 
 - use Navigate hook inside the provider.
--
+- creating constant file is good practice(to store hardCoded value)
