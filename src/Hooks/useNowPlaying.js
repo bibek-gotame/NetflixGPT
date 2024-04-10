@@ -7,11 +7,10 @@ export const useNowPlaying = () => {
     useEffect(() => {
         NowPlaying()
     }, [])
-    
+
     const NowPlaying = async () => {
         const data = await fetch(nowPLayingUrl, API_OPTIONS)
         const json = await data.json()
-        console.log(json);
         dispatch(addNowPlayingMovies(json.results))
     }
 

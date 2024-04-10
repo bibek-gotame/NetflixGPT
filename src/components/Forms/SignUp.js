@@ -1,56 +1,27 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState,} from "react";
 import Header from "../Header/Header";
 import { checkValidate } from '../../utils/validate'
-
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../utils/store/userSlice'
+
 const SignUp = () => {
   const user = useSelector((store) => store.user)
   const dispatch = useDispatch()
-
-
   const Navigate = useNavigate()
-
-
   const [isSignIn, setIsSignIn] = useState(true)
   const [ermessage, setErmessage] = useState(null)
   const emaill = useRef(null) // useRef takes the reference from ref={} and returns and an object.
   const password = useRef(null)
   const name = useRef(null)
 
-  // if (user) {
-  //   Navigate('/browse')
-  // }
-  // useEffect(() => {
-  //   if (user) {
-  //     Navigate('/browse');
-  //   }
-  // }, [user, Navigate]) 
-  // useEffect(()=>{
-  //   updateProfile(user, {
-  //     displayName: 'hi', photoURL: "https://example.com/jane-q-user/profile.jpg"
-  //   }).then(() => {
-  //     console.log('profile updated');
-  //     // Profile updated!
-  //     // ...
-  //   }).catch((error) => {
-  //     console.log(error);
-  //     // An error occurred
-  //     // ...
-  //   });
-  // },[user])
-
   const handleSubmit = () => {
-
     //Validate the Forms
     const message = checkValidate(emaill.current.value, password.current.value) // it returns either error message or null
     // ? useref => __.current.value to excess the value
-
     setErmessage(message)
 
     if (message) return;  //returns if message exist which implies an error no futher code will not be executed
@@ -60,25 +31,16 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          console.log('im runnning..1');
-
           updateProfile(user, {
-            displayName: name.current.value , photoURL: "https://images.unsplash.com/photo-1712415341931-96aff76a42e9?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            displayName: name.current.value, photoURL: "https://images.unsplash.com/photo-1712415341931-96aff76a42e9?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           }).then(() => {
             // Profile updated!
-            const { uid, email, displayName ,photoURL} = user
-
-            dispatch(addUser({ uid: uid, emaill : email, displayName: displayName ,photoURL : photoURL}))
-
+            const { uid, email, displayName, photoURL } = user
+            dispatch(addUser({ uid: uid, emaill: email, displayName: displayName, photoURL: photoURL }))
             Navigate('/browse');
-            // ...
           }).catch((error) => {
-            console.log(error);
-            console.log('error from profile');
-            // An error occurred
-            // ...
+            setErmessage('error')
           });
-
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -86,7 +48,6 @@ const SignUp = () => {
           setErmessage(errorCode + errorMessage)
           console.log(errorMessage);
         });
-
     } else {
       signInWithEmailAndPassword(auth, emaill.current.value, password.current.value)
         .then((userCredential) => {
@@ -101,20 +62,10 @@ const SignUp = () => {
           setErmessage(errorCode + errorMessage)
         });
     }
-
-
   }
-
-  // if (user) {
-  //   Navigate('/browse')
-  // }
-  // else
   return (
-
     <>
-      {/* <div className="relative"> */}
       <Header />
-
       <div className=" absolute">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/bea608a8-2fe7-4605-8b60-f3a48ae50720/NP-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg"
@@ -134,12 +85,8 @@ const SignUp = () => {
           setIsSignIn(!isSignIn)
         }}>
           {isSignIn ? 'New to Netflix ? Sign Up Now' : 'Already registered ? Sign In Now'}</p>
-
-
       </form>
-      {/* </div> */}
     </>
   );
 };
-
 export default SignUp;

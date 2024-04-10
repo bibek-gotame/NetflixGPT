@@ -6,6 +6,8 @@
 - Connected with firebase along authenticaiton with email/password.
 - Set up redux to hold the data of sigIn/SignUp.
 - useNavigate to navigate the path . used after certain condition or in function().
+- fetched nowplaying data from TMDB using custom hook
+- 
 
 <!--*-------------------------------- Concepts and Codes------------------------------------------ -->
 <!--! get know clearly about the authencation API's -->
@@ -20,6 +22,7 @@
 - unsubscribing..........<!--! not know much more -->
 -
 - useNavigate : a hook used to navigate directly.(used in oASC for proper redirection )
+- 
 
 
 
