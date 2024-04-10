@@ -4,8 +4,7 @@ import { checkValidate } from '../../utils/validate'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from 'react-redux';
+import { useSelector,useDispatch  } from "react-redux";
 import { addUser } from '../../utils/store/userSlice'
 
 const SignUp = () => {
