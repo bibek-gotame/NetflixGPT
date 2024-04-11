@@ -1,19 +1,19 @@
 
-function Title({title, overview}) {
-   
+function Title({ title, overview }) {
+  //  console.log('cahnged1');
   return (
     <>
-<div className="pt-52 w-[23rem] flex flex-col gap-4 p-10">
-<h1 className="font-bold text-lg">{title}</h1>
-<p>
-    {overview}
-</p>
-<div className="flex gap-4">
-    <button  className="border-2 rounded-md  w-28 py-3 bg-white font-bold text-lg">Play</button>
-    <button className="border-2 rounded-md w-28 py-3 bg-black text-white  font-bold text-lg">More Info</button>
+      <div className="pt-40 mt-2  px-6 h-full aspect-video  flex flex-col gap-4  absolute bg-gradient-to-r from-black text-white">
+        <h1 className="font-bold text-lg">{title}</h1>
+        <p className="w-[33rem]">
+          {overview}
+        </p>
+        <div className="flex gap-4">
+          <button className=" rounded-md  w-28 py-3 bg-white text-black font-bold text-lg">Play</button>
+          <button className=" rounded-md w-28 py-3 bg-black   font-bold text-lg">More Info</button>
 
-</div>
-</div>
+        </div>
+      </div>
     </>
   )
 }

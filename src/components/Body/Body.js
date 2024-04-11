@@ -1,8 +1,9 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import SignUp from '../Forms/SignUp'
-import Browse from '../Browse/Browse'
+import Browse from '../Browse/Browse' 
+
 function Body() {
-  const router = createBrowserRouter([
+  const router = createBrowserRouter([                                                                                                                        
     {
       path: "/",
       element: <SignUp />
@@ -14,7 +15,7 @@ function Body() {
   ])
 
   return (
-    <div>
+    <div >
 
       <RouterProvider router={router} />
     </div>

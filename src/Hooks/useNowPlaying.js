@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { API_OPTIONS, nowPLayingUrl } from "../utils/constant"
 import { addNowPlayingMovies } from "../utils/store/movieSlice"
 import { useDispatch } from 'react-redux'
+
 export const useNowPlaying = () => {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -14,4 +15,8 @@ export const useNowPlaying = () => {
         dispatch(addNowPlayingMovies(json.results))
     }
 
+}
+
+export const useMovieTrailer = ()=>{
+    
 }

@@ -7,7 +7,7 @@ function Browse() {
 useNowPlaying()
   return (
     <>
-    <div className='h-screen w-full bg-slate-400'>
+    <div className=' w-full bg-slate-400 overflow-x-hidden'>
     <Header/>
     <MainContainer/>
     <SecondaryContainer/>
