@@ -3,6 +3,7 @@ import SignUp from '../Forms/SignUp'
 import Browse from '../Browse/Browse' 
 
 function Body() {
+  
   const router = createBrowserRouter([                                                                                                                        
     {
       path: "/",
