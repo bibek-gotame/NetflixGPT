@@ -31,7 +31,8 @@ const SignUp = () => {
           // Signed up 
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://images.unsplash.com/photo-1712415341931-96aff76a42e9?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            displayName: name.current.value, photoURL: 
+            "https://images.unsplash.com/photo-1474658850099-527c4b3cf565?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           }).then(() => {
             // Profile updated!
             const { uid, email, displayName, photoURL } = user
@@ -53,7 +54,6 @@ const SignUp = () => {
           // Signed in 
           const user = userCredential.user;
           Navigate('/browse');
-          console.log('sign-running');
         })
         .catch((error) => {
           const errorCode = error.code;

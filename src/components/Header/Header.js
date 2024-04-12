@@ -42,7 +42,7 @@ function Header() {
 
         {user && <div className=" flex gap-2 items-center">
           <p className="text-2xl font-bold text-white">{user.displayName}</p>
-          <img src={user.photoURL} alt='photoo' className='w-16' />
+          <div className='w-[5rem] h-[5rem]  rounded-[50%] overflow-hidden' ><img  src={user.photoURL} alt='photoo' className=' ' /></div>
           <button
             onClick={SignOut}
             className="border-2 border-black rounded-lg font-bold px-4 py-2 text-white bg-red-600">Sign Out</button>

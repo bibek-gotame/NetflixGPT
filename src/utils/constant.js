@@ -8,4 +8,6 @@ export const API_OPTIONS = {
     }
 };
 
-export const nowPLayingUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+export const nowPlayingUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+
+export const IMG_URL = 'https://image.tmdb.org/t/p/w300/'

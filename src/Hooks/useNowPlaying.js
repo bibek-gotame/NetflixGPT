@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { API_OPTIONS, nowPLayingUrl } from "../utils/constant"
+import { API_OPTIONS, nowPlayingUrl } from "../utils/constant"
 import { addNowPlayingMovies } from "../utils/store/movieSlice"
 import { useDispatch } from 'react-redux'
 
@@ -10,13 +10,9 @@ export const useNowPlaying = () => {
     }, [])
 
     const NowPlaying = async () => {
-        const data = await fetch(nowPLayingUrl, API_OPTIONS)
+        const data = await fetch(nowPlayingUrl, API_OPTIONS)
         const json = await data.json()
         dispatch(addNowPlayingMovies(json.results))
     }
 
-}
-
-export const useMovieTrailer = ()=>{
-    
 }
