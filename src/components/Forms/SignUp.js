@@ -6,9 +6,10 @@ import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector,useDispatch  } from "react-redux";
 import { addUser } from '../../utils/store/userSlice'
+import { backGroundImageURL } from "../../utils/constant";
 
 const SignUp = () => {
-  const user = useSelector((store) => store.user)
+  // const user = useSelector((store) => store.user)
   const dispatch = useDispatch()
   const Navigate = useNavigate()
   const [isSignIn, setIsSignIn] = useState(true)
@@ -67,7 +68,7 @@ const SignUp = () => {
       <Header />
       <div className=" absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/bea608a8-2fe7-4605-8b60-f3a48ae50720/NP-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={backGroundImageURL}
           alt="background-imagee"
         />
       </div>
