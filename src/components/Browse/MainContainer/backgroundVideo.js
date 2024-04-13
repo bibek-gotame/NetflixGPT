@@ -13,6 +13,7 @@ function BackgroundVideo({ movie_id }) {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 
       ></iframe>
+
     </div>
   )
 }

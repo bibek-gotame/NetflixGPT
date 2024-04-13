@@ -7,7 +7,7 @@ const MovieCards = ({title,movies})=>{
         <>
     
     <div className=' p-4 '>
-        <h1 className='font-bold text-2xl text-white'>{title}</h1>
+        <h1 className='font-bold text-2xl text-white py-2'>{title}</h1>
         <div className='flex overflow-x-scroll overflow '>
         <div className='flex gap-2'>
 

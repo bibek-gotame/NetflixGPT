@@ -8,8 +8,8 @@ function Title({ title, overview }) {
           {overview}
         </p>
         <div className="flex gap-4">
-          <button className=" rounded-md  w-28 py-3 bg-white text-black font-bold text-lg">Play</button>
-          <button className=" rounded-md w-28 py-3 bg-black   font-bold text-lg">More Info</button>
+          <button className=" bg-opacity-80 rounded-md  w-28 py-3 bg-white text-black font-bold text-lg">Play</button>
+          <button className=" bg-opacity-80 rounded-md w-28 py-3 bg-black   font-bold text-lg">More Info</button>
 
         </div>
       </div>
