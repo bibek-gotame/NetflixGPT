@@ -16,3 +16,5 @@ export const topRatedMoviesURL = 'https://api.themoviedb.org/3/movie/top_rated'
 export const upComingMoviesURL = 'https://api.themoviedb.org/3/movie/upcoming'
 
 export const IMG_URL = 'https://image.tmdb.org/t/p/w300/'
+
+export const OPENAI_KEY = "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"
