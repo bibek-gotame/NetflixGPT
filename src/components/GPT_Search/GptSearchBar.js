@@ -1,17 +1,21 @@
 import { openai } from "../../utils/openai";
 import { useRef } from 'react'
+import { useDispatch } from 'react-redux'
+import { addGptSearchMoviesName } from "../../utils/store/gptSlice";
 function GptSearchBar() {
-
+    const dispatch = useDispatch()
     const search = useRef()
     const handleSumit = async (e) => {
         e.preventDefault()
         const gptQuery = 'Act as Moive recommendation system and suggest the relevant movies for the query : ' + search.current.value + '. Suggest only 5 movies , should  separeted by comma like ahead example. Example: abc , acb , uif , afa , hfd '
+      
         const data = await openai.chat.completions.create({
-            messages: [{ role: 'user', content:  gptQuery }],
+            messages: [{ role: 'user', content: gptQuery }],
             model: 'gpt-3.5-turbo',
         });
-console.log(data.choices);
+        console.log(data.choices);
         const gptMovies = data.choices[0]?.message?.content?.split(',')
+        dispatch(addGptSearchMoviesName(gptMovies))
         // console.log(gptMovies);
 
     }
