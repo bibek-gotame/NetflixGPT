@@ -1,24 +1,39 @@
 import { openai } from "../../utils/openai";
 import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { addGptSearchMoviesName } from "../../utils/store/gptSlice";
+import { API_OPTIONS, searchAPI } from "../../utils/constant"
+import { addGptSearchMovies} from "../../utils/store/gptSlice";
+
 function GptSearchBar() {
     const dispatch = useDispatch()
     const search = useRef()
+
+    
+    const getGptMovies = async (name) => {
+        const data = await fetch(searchAPI + name, API_OPTIONS)
+        const json = await data.json()
+        return json?.results[0]
+      }
+    
+
     const handleSumit = async (e) => {
         e.preventDefault()
-        const gptQuery = 'Act as Moive recommendation system and suggest the relevant movies for the query : ' + search.current.value + '. Suggest only 5 movies , should  separeted by comma like ahead example. Example: abc , acb , uif , afa , hfd '
-      
+        const gptQuery = 'Act as Moive recommendation system and suggest the relevant movies for the query : ' + search.current.value + '. Suggest only 5 movies ,movies name should be  separeted by comma , like ahead example. Example: abc , acb , uif , afa , hfd  '
+
         const data = await openai.chat.completions.create({
             messages: [{ role: 'user', content: gptQuery }],
             model: 'gpt-3.5-turbo',
         });
-        console.log(data.choices);
-        const gptMovies = data.choices[0]?.message?.content?.split(',')
-        dispatch(addGptSearchMoviesName(gptMovies))
-        // console.log(gptMovies);
+        const gptMoviesName = data.choices[0]?.message?.content?.split(',')
+
+        const moviesPromises = gptMoviesName?.map(name => getGptMovies(name))
+
+        const gptMovies = await Promise.all(moviesPromises)
+
+        dispatch(addGptSearchMovies({gptMovies:gptMovies,gptMoviesName:gptMoviesName}))
 
     }
+
     return (
         <div className="z-10 pt-48  ">
 

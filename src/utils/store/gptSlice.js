@@ -12,14 +12,18 @@ const gptSlice = createSlice({
         toggleGptSearch: (state)=>{
             state.toggleGptSearchStatus = !state.toggleGptSearchStatus
         },
-        addGptSearchMoviesName: (state,action)=>{
-            state.gptSearchMovies = action.payload
-        },
+        // addGptSearchMoviesName: (state,action)=>{
+        //     state.gptSearchMoviesName = action.payload
+
+        // },
         addGptSearchMovies: (state,action)=>{
-            state.gptSearchMovies = action.payload
+            const {gptMoviesName,gptMovies}=action.payload
+            state.gptSearchMovies = gptMovies
+            state.gptSearchMoviesName = gptMoviesName
+
         }
     }
 })
 
-export const { toggleGptSearch,addGptSearchMovies,addGptSearchMoviesName} = gptSlice.actions
+export const { toggleGptSearch,addGptSearchMovies} = gptSlice.actions
 export default gptSlice.reducer
