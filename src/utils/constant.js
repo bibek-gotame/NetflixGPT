@@ -6,8 +6,8 @@ export const API_OPTIONS = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NTE1ZTU1Nzc3ZDA0YTM3NmU1ZjNmYzkyNjJjMDE1NSIsInN1YiI6IjY2MTYyOWE1NTI4YjJlMDE2M2IzZjk1YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QmlOoqG9wbOSNI1MWCAf6UxuEmyUed627ZSKO_Joxyg'
-    }
+        Authorization: 'Bearer' + process.env.REACT_APP_OPENAI_KEY,
+      }
 };
 
 export const nowPlayingUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
@@ -18,4 +18,4 @@ export const searchAPI = 'https://api.themoviedb.org/3/search/movie?query='
 
 export const IMG_URL = 'https://image.tmdb.org/t/p/w300/'
 
-export const OPENAI_KEY = "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"
+export const OPENAI_KEY = process.env.REACT_APP_TMMDB_KEY

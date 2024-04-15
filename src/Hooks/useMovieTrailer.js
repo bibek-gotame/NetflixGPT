@@ -17,8 +17,9 @@ export const useMovieTrailer = (movie_id) => {
   }
 
   useEffect(() => {
-    !trailerVideo && 
-    getTrailer() // useeffect run on every render with which api being called in every rendering so to avoid, we checked is trailer already existed , no api will be called
+    !trailerVideo &&  getTrailer() // useeffect run on every render with which api being called in every rendering so to avoid, we checked is trailer already existed , no api will be called
+ // this is called memoization
+    
   }, [movie_id])
 
 }
