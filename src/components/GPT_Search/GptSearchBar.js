@@ -24,7 +24,7 @@ function GptSearchBar() {
             messages: [{ role: 'user', content: gptQuery }],
             model: 'gpt-3.5-turbo',
         });
-        const gptMoviesName = data.choices[0]?.message?.content?.split(',')
+        const gptMoviesName = data?.choices[0]?.message?.content?.split(',')
 
         const moviesPromises = gptMoviesName?.map(name => getGptMovies(name))
 

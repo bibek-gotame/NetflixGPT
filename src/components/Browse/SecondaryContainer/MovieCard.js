@@ -3,9 +3,9 @@ const MovieCard = ({movie})=>{
     // console.log(movie.id);
     return (
         <>
-        <div className='w-[15rem]'>
+        {movie && <div className='w-[15rem]'>
             <img src={IMG_URL + movie?.poster_path} alt='photos'/>
-        </div>
+        </div>}
         </>
     )
 }
