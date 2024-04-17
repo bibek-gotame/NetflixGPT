@@ -1,13 +1,11 @@
-
-import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Title from './Title'
 import BackgroundVideo from './backgroundVideo'
 function MainContainer() {
     const movies = useSelector((store) => store.movies?.nowPlayingMovies)
     if (!movies) return;
-
     const { original_title, overview, id } = movies[5]
+    
     return (
         <>
         <div className='bg-black' >

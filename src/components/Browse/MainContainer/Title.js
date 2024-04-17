@@ -4,7 +4,7 @@ function Title({ title, overview }) {
     <>
       <div className="pt-64 mt-2  px-6 w-full aspect-video  flex flex-col gap-4  absolute  text-white">
         <h1 className="font-bold text-lg">{title}</h1>
-        <p className="w-[33rem]">
+        <p className="w-full max-w-[33rem]">
           {overview}
         </p>
         <div className="flex gap-4">

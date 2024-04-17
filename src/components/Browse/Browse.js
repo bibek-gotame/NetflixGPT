@@ -12,14 +12,16 @@ import { useTopRatedMovies } from '../../Hooks/useTopRatedMovies ';
 function Browse() {
   const toggleGptSearchStatus = useSelector((store) => store.gpt?.toggleGptSearchStatus)
   const user = useSelector(store => store.user)
+  const upComingMovies = useSelector((store) => store.movies?.upComingMovies);
+  const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
+
   useNowPlaying();
   usePopularMovies();
   useTopRatedMovies();
   useUpComingMovies();
 
-  if (!user) return (<>
+  if (!user && !upComingMovies && !trailerVideo) return (<>
     <Header />
-
     <p>Loading</p></>)
   else return (
     <>

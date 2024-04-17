@@ -35,28 +35,26 @@ function Header() {
     });
   }
 
-  const handleGptSearch = ()=>{
+  const handleGptSearchStatus = ()=>{
     dispatch(toggleGptSearch())
   }
   return (
     <>
-      <div className="absolute w-full px-8 py-2  z-30 flex flex-col md:flex-row justify-between">
+      <div className="absolute w-full px-2 sm:px-8 py-2  z-30 flex flex-row gap-2 justify-between">
 
         <div className="w-2/3 mx-auto md:mx-0 pt-3 " >
           <img src={LOGO}
             alt='logo' className="w-44" />
         </div>
-
-        {user && <div className="flex gap-2 items-center">
+        {user && <div className="flex flex-col vsm:flex-row gap-2 items-center">
           {/* <p className="text-2xl font-bold text-white">{user.displayName}</p>
-
           <div className='w-[5rem] h-[5rem]  rounded-[50%] overflow-hidden' ><img src={user.photoURL} alt='photoo' className=' ' /></div>*/}
           <button  
-          onClick={handleGptSearch}
-          className=" rounded-lg font-bold px-4 py-2 text-white bg-green-600 w-32">{toggleGptSearchStatus? "Home":"Gpt Search"}</button>
+          onClick={handleGptSearchStatus}
+          className=" rounded-lg font-bold  py-2 text-white bg-green-600 w-24">{toggleGptSearchStatus? "Home":"Gpt Search"}</button>
           <button
             onClick={SignOut}
-            className=" rounded-lg font-bold px-4 py-2 text-white bg-red-600">Sign Out</button>
+            className=" rounded-lg font-bold  py-2 w-24 text-white bg-red-600">Sign Out</button>
         </div>}
       </div>
     </>
