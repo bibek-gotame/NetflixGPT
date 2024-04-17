@@ -2,7 +2,7 @@
 function Title({ title, overview }) {
   return (
     <>
-      <div className="pt-64 mt-2  px-6 w-full aspect-video  flex flex-col gap-4  absolute  text-white">
+      <div className="pt-[16rem] mt-2  px-6 w-full aspect-video  flex flex-col gap-4  absolute z-10 text-white">
         <h1 className="font-bold text-lg">{title}</h1>
         <p className="w-full max-w-[33rem]">
           {overview}

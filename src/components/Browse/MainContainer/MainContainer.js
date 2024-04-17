@@ -8,7 +8,7 @@ function MainContainer() {
     
     return (
         <>
-        <div className='bg-black' >
+        <div className='bg-black  z-0' >
 
             <Title title={original_title} overview={overview} />
             <BackgroundVideo movie_id={id} />

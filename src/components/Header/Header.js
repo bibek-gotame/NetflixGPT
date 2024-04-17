@@ -40,9 +40,9 @@ function Header() {
   }
   return (
     <>
-      <div className="absolute w-full px-2 sm:px-8 py-2  z-30 flex flex-row gap-2 justify-between">
+      <div className="absolute z-50 w-full px-2 sm:px-8 py-2 bg-black bg-opacity-30  flex flex-row gap-2 justify-between">
 
-        <div className="w-2/3 mx-auto md:mx-0 pt-3 " >
+        <div className="w-2/3 pt-3 " >
           <img src={LOGO}
             alt='logo' className="w-44" />
         </div>
@@ -51,7 +51,7 @@ function Header() {
           <div className='w-[5rem] h-[5rem]  rounded-[50%] overflow-hidden' ><img src={user.photoURL} alt='photoo' className=' ' /></div>*/}
           <button  
           onClick={handleGptSearchStatus}
-          className=" rounded-lg font-bold  py-2 text-white bg-green-600 w-24">{toggleGptSearchStatus? "Home":"Gpt Search"}</button>
+          className="    rounded-lg font-bold  py-2 text-white bg-green-600 w-24">{toggleGptSearchStatus? "Home":"Gpt Search"}</button>
           <button
             onClick={SignOut}
             className=" rounded-lg font-bold  py-2 w-24 text-white bg-red-600">Sign Out</button>

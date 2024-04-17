@@ -30,12 +30,12 @@ function GptSearchBar() {
     return (
         <div className="z-10 pt-48  ">
 
-            <form onSubmit={(e) => { handleSubmit(e) }} className="mx-auto w-fit ">
+            <form onSubmit={(e) => { handleSubmit(e) }} className="mx-auto  w-full max-w-[50rem] px-2">
                 <h1 className="text-center font-bold text-white text-3xl shadow-2xl">GPT SEARCH</h1>
-                <div className="flex   gap-2">
+                <div className="flex flex-col mdSm:flex-row gap-2">
                     <input
                         ref={search}
-                        className="rounded-md w-[50rem] py-1 px-4"
+                        className="rounded-md  w-full py-2 px-2"
                         type='text' placeholder="What kinda moives do you like to watch?" />
                     <button className="rounded-md px-4 text-white font-bold text-xl py-2 bg-red-600">Search</button>
 

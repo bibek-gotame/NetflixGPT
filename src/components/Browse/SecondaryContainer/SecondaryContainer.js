@@ -9,8 +9,8 @@ function SecondaryContainer() {
 
   return (
     <>
-    <div className=' bg-black '>
-      <div className='mt-[-15rem]'>
+    <div className=' bg-black z-10 '>
+      <div className='lg:mt-[-17rem]'>
       <MovieCards title={'Now Playing Movies'} movies={nowPlayingMovies}/>
       <MovieCards title={'Popular Movies'} movies={PopularMovies}/>
       <MovieCards title={'Top Rated Movies'} movies={topRatedMovies}/>

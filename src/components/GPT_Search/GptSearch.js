@@ -5,9 +5,9 @@ import GptSuggestion from "./GptSuggestion"
 
 function GptSearch() {
   return (
-    <div className="bg-opacity-30  bg-black">
-
-    <img className="absolute w-full -z-10" src={backGroundImageURL} alt='backgroungImage'/>
+    <div >
+<div className="fixed bg-opacity-60  h-screen w-screen -z-10 bg-black "></div>
+    <img className=" w-screen h-screen fixed object-cover  -z-20 " src={backGroundImageURL} alt='backgroungImage'/>
     <div>
         <GptSearchBar/>
         <GptSuggestion/>

@@ -3,13 +3,15 @@ import MovieCard from "../Browse/SecondaryContainer/MovieCard"
 function GptSuggestion() {
   // const gptSearchMoviesName = useSelector(store => store.gpt?.gptSearchMoviesName)
   const gptSearchMovies = useSelector(store => store.gpt?.gptSearchMovies)
-
- 
-  return (
+const className = {
+ w:"w-[11rem]"
+}
+ if(gptSearchMovies)
+ return (
     <div>
-      <div className="  bg-black border-2 border-black mt-32  ">
-        <div className="flex flex-wrap gap-4  -mt-20  px-8">
-          {gptSearchMovies?.map(movie => (<MovieCard key={movie?.id} movie={movie} />))}
+      <div className="  mt-32  ">
+        <div className="flex flex-wrap  gap-4 justify-center -mt-20">
+          {gptSearchMovies?.map(movie => (<MovieCard key={movie?.id}  movie={movie} className={className} />))}
         </div>
       </div>
     </div>
