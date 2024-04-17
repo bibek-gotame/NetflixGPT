@@ -18,3 +18,9 @@ export const searchAPI = 'https://api.themoviedb.org/3/search/movie?query='
 export const IMG_URL = 'https://image.tmdb.org/t/p/w300/'
 
 export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY
+
+
+
+export const className = {
+  w:"w-[11rem]"
+ }

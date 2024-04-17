@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux"
 import MovieCard from "../Browse/SecondaryContainer/MovieCard"
+import { className } from "../../utils/constant"
 function GptSuggestion() {
   // const gptSearchMoviesName = useSelector(store => store.gpt?.gptSearchMoviesName)
   const gptSearchMovies = useSelector(store => store.gpt?.gptSearchMovies)
-const className = {
- w:"w-[11rem]"
-}
+
  if(gptSearchMovies)
  return (
     <div>
