@@ -15,16 +15,16 @@ function Header() {
   const dispatch = useDispatch()
   useEffect(() => {   //? what unsubscribing and why it is done ?
     const unsubscribe =
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { uid, email, displayName, photoURL } = user;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }))
-        navigate('/browse')
-      } else {
-        dispatch(removeUser())
-        navigate('/')
-      }
-    });
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const { uid, email, displayName, photoURL } = user;
+          dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }))
+          navigate('/browse')
+        } else {
+          dispatch(removeUser())
+          navigate('/')
+        }
+      });
     return () => unsubscribe();
   }, [])
 
@@ -35,26 +35,25 @@ function Header() {
     });
   }
 
-  const handleGptSearchStatus = ()=>{
+  const handleGptSearchStatus = () => {
     dispatch(toggleGptSearch())
   }
   return (
     <>
-      <div className="absolute z-50 w-full px-2 sm:px-8 py-2 bg-black bg-opacity-30  flex flex-row gap-2 justify-between">
 
-        <div className="w-2/3 pt-3 " >
+      <div className={` ${toggleGptSearchStatus ? '  bg-opacity-30 ' : 'xl:bg-transparent '}   bg-black absolute z-50 w-full px-2 sm:px-8 py-3  flex flex-row gap-2 justify-between  `}>
+        {/* {toggleGptSearchStatus && ' bg-opacity-30 '}  */}
+        <div className=" flex items-center " >
           <img src={LOGO}
-            alt='logo' className="w-44" />
+            alt='logo' className="w-44 " />
         </div>
-        {user && <div className="flex flex-col vsm:flex-row gap-2 items-center">
-          {/* <p className="text-2xl font-bold text-white">{user.displayName}</p>
-          <div className='w-[5rem] h-[5rem]  rounded-[50%] overflow-hidden' ><img src={user.photoURL} alt='photoo' className=' ' /></div>*/}
-          <button  
-          onClick={handleGptSearchStatus}
-          className="    rounded-lg font-bold  py-2 text-white bg-green-600 w-24">{toggleGptSearchStatus? "Home":"Gpt Search"}</button>
+        {user && <div className=" flex p-0 flex-col vsm:flex-row   gap-2 items-center">
+          <button
+            onClick={handleGptSearchStatus}
+            className="    rounded-lg font-bold py-1 sm:py-2   text-white bg-green-600 w-24 px-1">{toggleGptSearchStatus ? "Home" : "Gpt Search"}</button>
           <button
             onClick={SignOut}
-            className=" rounded-lg font-bold  py-2 w-24 text-white bg-red-600">Sign Out</button>
+            className=" rounded-lg font-bold  py-1  sm:py-2 w-24   px-1 text-white bg-red-600">Sign Out</button>
         </div>}
       </div>
     </>

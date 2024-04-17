@@ -22,5 +22,5 @@ export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY
 
 
 export const className = {
-  w:"w-[11rem]"
+  w:"w-[9rem]"
  }
