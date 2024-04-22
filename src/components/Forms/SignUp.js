@@ -15,7 +15,7 @@ const SignUp = () => {
   const password = useRef(null)
   const name = useRef(null)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     //Validate the Forms
     const message = checkValidate(emaill.current.value, password.current.value) // it returns either error message or null
     // ? useref => __.current.value to excess the value
@@ -35,6 +35,10 @@ const SignUp = () => {
             // Profile updated!
             const { uid, email, displayName, photoURL } = user
             dispatch(addUser({ uid: uid, emaill: email, displayName: displayName, photoURL: photoURL }))
+            // emaill = ''
+            // password = ''
+            // name = ''
+
           }).catch((error) => {
             setErmessage('error')
           });
@@ -50,6 +54,9 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
+              // emaill = ''
+              // password = ''
+              // name = ''
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -57,6 +64,7 @@ const SignUp = () => {
           setErmessage(errorCode + errorMessage)
         });
     }
+
   }
   return (
     <div >
@@ -64,31 +72,31 @@ const SignUp = () => {
       <div className="absolute w-screen h-screen opacity-50 z-10 bg-black "></div>
       <div className=" absolute ">
         <img
-        className=" w-screen h-screen object-cover"
+          className=" w-screen h-screen object-cover"
           src={backGroundImageURL}
           alt="background-imagee"
         />
       </div>
-     <div className="mx-2">
-     <form onSubmit={(e) => e.preventDefault()} className="relative shadow-red-600  shadow-xl  z-20  mx-auto flex flex-col gap-3 w-ful max-w-[23rem] py-10 px-6 rounded-lg bg-black top-[20vh]  text-white bg-opacity-85">
+      <div className="mx-2">
+        <form onSubmit={(e) => e.preventDefault()} className="relative shadow-red-600  shadow-xl  z-20  mx-auto flex flex-col gap-3 w-ful max-w-[23rem] py-10 px-6 rounded-lg bg-black top-[20vh]  text-white bg-opacity-85">
 
-<h2 className="font-extrabold text-2xl my-2" >{isSignIn ? 'Sign In' : 'Sign Up'}</h2>
-{!isSignIn && <input ref={name} type='text' placeholder='Enter your Full Name' className="w-full p-4  rounded-md bg-gray-800" />}
+          <h2 className="font-extrabold text-2xl my-2" >{isSignIn ? 'Sign In' : 'Sign Up'}</h2>
+          {!isSignIn && <input ref={name} type='text' placeholder='Enter your Full Name' className="w-full p-4  rounded-md bg-gray-800" />}
 
-<input ref={emaill} type='email' placeholder='Enter your email' className="w-full p-4  rounded-md bg-gray-800" />
-<input ref={password} type='password' placeholder='Enter your password' className="w-full p-4   rounded-md bg-gray-800" />
-<p className="text-red-500 font-bold">{ermessage}</p>
+          <input ref={emaill} type='email' placeholder='Enter your email' className="w-full p-4  rounded-md bg-gray-800" />
+          <input ref={password} type='password' placeholder='Enter your password' className="w-full p-4   rounded-md bg-gray-800" />
+          <p className="text-red-500 font-bold">{ermessage}</p>
 
-<button onClick={handleSubmit} className="w-full p-4   rounded-md bg-red-600 font-bold">{isSignIn ? 'Sign in' : 'Sign Up'}
-</button>
+          <button onClick={handleSubmit} className="w-full p-4   rounded-md bg-red-600 font-bold">{isSignIn ? 'Sign in' : 'Sign Up'}
+          </button>
 
-<p className='px-2 py-2  cursor-pointer hover:underline' onClick={() => {
-  setIsSignIn(!isSignIn)
-}}>
-  {isSignIn ? 'New to Netflix ? Sign Up Now' : 'Already registered ? Sign In Now'}
-</p>
-</form>
-     </div>
+          <p className='px-2 py-2  cursor-pointer hover:underline' onClick={() => {
+            setIsSignIn(!isSignIn)
+          }}>
+            {isSignIn ? 'New to Netflix ? Sign Up Now' : 'Already registered ? Sign In Now'}
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
