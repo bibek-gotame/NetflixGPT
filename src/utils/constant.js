@@ -17,7 +17,7 @@ export const searchAPI = 'https://api.themoviedb.org/3/search/movie?query='
 
 export const IMG_URL = 'https://image.tmdb.org/t/p/w300/'
 
-export const OPENAI_KEY = 'sk-proj-XwPYt0uACNWhKC24qw70T3BlbkFJupHSphLsdYKCmCXBeRhS'
+export const OPENAI_KEY = 'sk-proj-H4sYuNitzmbdEURto577T3BlbkFJOspBZlqqTTw7J96p9kWx'
 
 
 
