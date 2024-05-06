@@ -1,8 +1,7 @@
 import MovieCard from './MovieCard'
-// import {useEffect} from 'react'
+
 const MovieCards = ({title,movies})=>{
-    
-// },[])
+
   return (
         <>
     

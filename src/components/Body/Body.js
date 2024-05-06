@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import SignUp from '../Forms/SignUp'
 import Browse from '../Browse/Browse' 
+import WatchPage from '../Watch/WatchPage'
 
 function Body() {
   
@@ -12,7 +13,12 @@ function Body() {
     {
       path: "/browse",
       element: <Browse />
-    }
+    },
+    {
+    path: "/watch",
+    element: <WatchPage />
+  },
+
   ])
   
 
